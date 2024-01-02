@@ -1,0 +1,60 @@
+Controllers, Models, Repositories And Services Explained
+
+Controllers-
+Purpose: Controllers are responsible for handling incoming HTTP requests, processing them, and returning the appropriate response. They act as an interface between the user and the server.
+Functionality: In Spring Boot, controllers usually have mappings for RESTful APIs, handling various HTTP methods like GET, POST, PUT, and DELETE. They interpret user inputs and translate them into actions to be performed by the model or the view.
+
+Models--
+handles data logic interacts wit database and responds back to Controllers with the data
+Summary
+Entities: Directly map to database tables; used with ORM; focused on database schema and relationships.
+Models: A broader concept; represent data in the application; can be entities, DTOs, or other forms of data containers.
+
+
+Repositoryies--
+Purpose: Repositories are interfaces that abstract the data layer, providing a mechanism to perform database operations without exposing the details of the data source.
+Functionality: In Spring Boot, repositories often extend JpaRepository or CrudRepository, which come with standard methods for CRUD (Create, Read, Update, Delete) operations. They are typically used to interact with relational databases.
+so basicaly your extending JpaRepository or CrudRepository which come with standard methods for CRUD you can use in your database operations
+
+
+
+
+Services-- 
+Purpose: Services contain the business logic of your application. They act as a bridge between the controller and the repository, performing the necessary computations or transformations.
+Functionality: Services in Spring Boot handle the application's core functionality, such as calculations, database interactions, and calling external APIs. They keep the business logic separate from the controllers and repositories, making the code more modular and testable.
+
+
+
+
+view- thymeleaf handles the way it dynamically appears template
+
+
+
+ENTITIES-
+Entities in a Spring Boot application act as a bridge between the database and the application, repackaging the database in a way that the application can understand and interact with. Let's break this down a bit:
+ENTITIES NOTE- Note that entites in this application are defined in the model part as well rather than in a entity folder
+Mapping Database to Java Objects:
+
+Entities take the tables and columns of a database and represent them as Java classes and fields. This process is known as Object-Relational Mapping (ORM). In ORM, each entity class corresponds to a table in the database, and each field in the entity class corresponds to a column in that table.
+Simplifying Data Manipulation:
+
+With entities, you can work with database data as if you were working with regular Java objects. For instance, creating a new row in a database table can be as simple as creating a new instance of an entity class and setting its fields.
+Abstraction Layer:
+
+Entities provide an abstraction layer over the database. You don't need to write raw SQL queries for most operations. Instead, you interact with the database through these entity objects. This abstraction makes it easier to maintain and modify the application since changes in the database structure might require only changes in the entity classes.
+Integration with Spring Boot Framework:
+
+Spring Boot, along with JPA (Java Persistence API), provides a seamless way to define these entities using annotations. Annotations like @Entity, @Table, @Id, @Column, and others are used to define how a Java class and its fields map to a database table and its columns.
+Example:
+
+Consider a simple example: You have a User entity class in your Spring Boot application. This User entity has fields like id, username, and password. In the database, there is a corresponding table named users with columns id, username, and password. The User entity allows your application to interact with the users table in a more Java-friendly way.
+In essence, entities act as a translator or intermediary that converts database tables and rows into a format (Java classes and objects) that the application can easily work with, thus bridging the gap between the database structure and the application's data handling needs.
+
+SIMPLE- entites basicaly rewrite the sql data in way that the application can understand the data
+
+INJECTION--
+IS taking the code from other places and using it in your application such as taking the account repostory and and using it in acount services
+and inheritance
+
+@Autowired----
+so autowired connects those naems speficed accountRepository and password encoder(basicaly allows it to inherit what was specified in other files) with the what what they do in other files so they inherit the methods defined in other files

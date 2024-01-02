@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}" />
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOG :: HOME</title>
+</head>
+<body>
+    <!--navbar below-->
+<div th:replace="navbar :: navbar"></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+     <!--navbar above-->
+  
+    <!--added the app id-->
+    <div  class="container">
+       
+        <ul>
+            <!-- Thymeleaf's th:href for creating a dynamic link to the new post page -->
+            <div sec:authorize="isAuthenticated()">              
+
+ <li><a th:href="@{/posts/new}">New Post</a></li>
+
+            </div>
+           
+        </ul>
+        <div class="posts-container">
+            <!-- Thymeleaf loop: Iterates over each 'post' in the provided 'posts' list -->
+            <div class="post" th:each="post : ${posts}">
+                <!-- Dynamic link creation for each post. Constructs the URL based on each post's ID -->
+                <h2 class="title2"><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Title</a>
+                </h2>
+                <!-- Displaying the first name of the account who wrote the post -->
+                <h5 class="writtenby2" th:text="'Written by ' + ${post.account.firstName}">Account First Name</h5>
+
+                <!-- Displaying the creation and last update time of the post -->
+                <h5 class="createdat2" th:text="'Published on ' + ${post.createdAt}">Created At</h5>
+                <h5 class="updated2" th:text="'Last Updated on ' + ${post.updatedAt}">Updated At</h5>
+                <!-- Displaying the post body -->
+                <!--<p th:text="${post.body}">Body text</p>-->
+                <p class="postbody2" th:utext="${#strings.abbreviate(post.body,450)} "></p>
+               
+
+                <br />
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- Conditionally display the login link only if the user is not authenticated -->
+    <!--  
+    <ul sec:authorize="!isAuthenticated()">
+        <li><a th:href="@{/login}">Login</a></li>
+    </ul>-->
+    <!-- Displaying the logout form only if the user is authenticated -->
+    <div sec:authorize="isAuthenticated()">
+        <form action="#"
+
+        th:action="@{/logout}"
+        method="POST">
+            <!-- Displaying the authenticated user's name -->
+            <div class="form-group">
+                <label>Hi, <span sec:authentication="name">Username</span></label>
+            </div>
+<!--footer thymeleaf fragment goes here-->
+
+            <!-- Logout button -->
+            <button type="submit" >Logout</button>
+        </form>
+    </div>
+    <div th:insert="footer :: footerFragment">
+    
+ 
+    <!--footer thymeleaf fragment ends here-->
+</div>
+
+
+<!--Below is vue.js added to this-->
+
+
+<!--Above is vue.js added to this-->
+<script th:src="@{/assets/js/practice.js}"></script>
+</body>
+</html>
+
+

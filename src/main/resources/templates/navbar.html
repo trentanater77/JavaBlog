@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Your head content -->
+    <script th:src="@{/assets/js/practice.js}"></script>
+</head>
+<body>
+    <!-- Your navbar code -->
+    
+    <nav id="navbar" th:fragment="navbar">
+        <div class="center">
+        <h1 class="center">Super Kitty</h1>
+        <br>
+        <br>
+        <br>
+        <input type="checkbox" id="active">
+        <label for="active" class="menu-btn"><span></span></label>
+        <label for="active" class="close"></label>
+        <div class="wrapper">
+            <ul>
+                <!-- Update this line -->
+                <li><a th:href="@{/}">Home</a></li>
+                
+            </ul>
+        </div>
+        
+        <div class="content">
+            <div class="title">
+                <!-- Title content goes here -->
+            </div>
+        </div>
+       </div>
+      
+    </nav>
+    
+</body>
+</html>
+
+

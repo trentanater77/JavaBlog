@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "9777:9777"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:sqlserver://host.docker.internal:1433;databaseName=blogApp;encrypt=false;trustServerCertificate=true;
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: Trenton420$
+      SPRING_DATASOURCE_DRIVERCLASSNAME: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      # Other environment variables...
+    depends_on:
+      - db
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+    environment:
+      SA_PASSWORD: "Trenton420$"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+
+volumes:
+  sqlserver-data:
+
+
+

@@ -1,0 +1,265 @@
+.center {
+    text-align: center; /* This will center the text horizontally within its container */
+    background-color: white;
+   
+}
+
+  
+*{
+  
+  margin: 0;
+  padding: 0;
+  
+  box-sizing: border-box;
+  
+ 
+}
+.wrapper{
+  
+  position: fixed;
+  top: 0;
+  /*left: -100%;*/
+  right: -100%;
+  height: 100%;
+  width: 100%;
+  background: #222831;
+  /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
+  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+ /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%);*/
+  transition: all 0.6s ease-in-out;
+}
+#active:checked ~ .wrapper{
+  /*left: 0;*/
+  right:0;
+}
+.menu-btn{
+  position: absolute;
+  z-index: 2;
+  right: 20px;
+  /*left: 20px; */
+  top: 20px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  /*color: #fff;*/
+  /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
+  /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
+ /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
+  transition: all 0.3s ease-in-out;
+}
+.menu-btn span,
+.menu-btn:before,
+.menu-btn:after{
+	content: "";
+	position: absolute;
+	top: calc(50% - 1px);
+	left: 30%;
+	width: 40%;
+	border-bottom: 2px solid #000;
+	transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.menu-btn:before{
+  transform: translateY(-8px);
+}
+.menu-btn:after{
+  transform: translateY(8px);
+}
+
+
+.close {
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	transition: background .6s;
+}
+
+/* closing animation */
+#active:checked + .menu-btn span {
+	transform: scaleX(0);
+}
+#active:checked + .menu-btn:before {
+	transform: rotate(45deg);
+  border-color: #fff;
+}
+#active:checked + .menu-btn:after {
+	transform: rotate(-45deg);
+  border-color: #fff;
+}
+.wrapper ul{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  height: 90%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+}
+.wrapper ul li{
+  height: 10%;
+  margin: 15px 0;
+}
+.wrapper ul li a{
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 500;
+  padding: 5px 30px;
+  color: #fff;
+  border-radius: 50px;
+  position: absolute;
+  line-height: 50px;
+  margin: 5px 30px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.wrapper ul li a:after{
+  position: absolute;
+  content: "";
+  background: #fff;
+   /*background: linear-gradient(#14ffe9, #ffeb3b, #ff00e0);*/
+  /*background: linear-gradient(375deg, #1cc7d0, #2ede98);*/
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 50px;
+  transform: scaleY(0);
+  z-index: -1;
+  transition: transform 0.3s ease;
+}
+.wrapper ul li a:hover:after{
+  transform: scaleY(1);
+}
+.wrapper ul li a:hover{
+  color: black;
+}
+input[type="checkbox"]{
+  display: none;
+}
+.content{
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  text-align: center;
+  width: 100%;
+  color: #202020;
+}
+.content .title{
+  font-size: 40px;
+  font-weight: 700;
+}
+.content p{
+  font-size: 35px;
+  font-weight: 600;
+}
+
+#active:checked ~ .wrapper ul li a{
+  opacity: 1;
+}
+.wrapper ul li a{
+  transition: opacity 1.2s, transform 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform: translateX(100px);
+}
+#active:checked ~ .wrapper ul li a{
+	transform: none;
+	transition-timing-function: ease, cubic-bezier(.1,1.3,.3,1); /* easeOutBackを緩めた感じ */
+   transition-delay: .6s;
+  transform: translateX(-100px);
+}
+/* everything above is navbar*/
+
+/*# sooo below is post css */
+body {
+  background-color: #222831;
+}
+.postbody{
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 0 20px;
+    
+    
+}
+
+
+.posttitle{
+
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 0 20px;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+.writtenby{
+margin: 0 auto;
+    max-width: 800px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.publishedon{
+margin: 0 auto;
+    max-width: 800px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.lastupdated {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 0 20px;
+    text-align: center;
+    margin-bottom: 20px; /* Add top margin */
+}
+
+/*# sooo below is hello for post and such css */
+
+
+.post  {
+  
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 20px;
+  border: 5px solid gray;
+  padding: 10px; /* Add some padding inside the post */
+  width: 80%; /* Adjust width as needed */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  word-wrap: break-word; /* Break long words to prevent overflow */
+  background-color: white;
+}
+
+.whiteheader{
+  background-color: #222831;
+}
+
+.footer {
+  /* Removed position: fixed; to let it be in the normal document flow */
+  padding: 2rem;
+  background: white;
+  color: black;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /* Other styles as needed */
+}
+
+img{
+  width: 500px;
+  height: 400px
+}
+

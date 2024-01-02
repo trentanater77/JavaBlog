@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blog :: Register</title>
+    </head>
+    <body>
+    <div class="container">
+        <h1>Spring Boot Blog Application</h1>
+        <hr />
+
+        <!-- Thymeleaf form action: Sets the form's action attribute dynamically to the '/register' URL -->
+        <form action="#"
+        th:action="@{/register}"
+        th:object="${account}"
+        method="POST">
+
+            <div>
+                <label for="firstname">First Name</label>
+                <!-- Thymeleaf input field: Binds the 'firstName' property of the 'account' object to this input field -->
+                <input id="firstname" type="text" th:field="*{firstName}" placeholder="First Name"/>
+            </div>
+            <div>
+                <label for="lastname">Last Name</label>
+                <!-- Thymeleaf input field: Binds the 'lastName' property of the 'account' object to this input field -->
+                <input id="lastname" type="text" th:field="*{lastName}" placeholder="Last Name"/>
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <!-- Thymeleaf input field: Binds the 'email' property of the 'account' object to this input field -->
+                <input id="email" type="text" th:field="*{email}" placeholder="Email"/>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <!-- Thymeleaf input field: Binds the 'password' property of the 'account' object to this input field -->
+                <input id="password" type="password" th:field="*{password}" placeholder="Password"/>
+            </div>
+
+            <!-- Regular HTML button for submitting the form -->
+            <button type="submit">Register!</button>
+        </form>
+    </div>
+    </body>
+</html>

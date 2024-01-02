@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <link rel="stylesheet" type="text/css" th:href="@{/assets/css/style.css}" />
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Blog :: Post</title>
+    </head>
+    <body>
+        <div class="whiteheader">
+    <div>
+        <div th:replace="navbar :: navbar"></div>
+        
+        </div>
+    <div class="container">
+        
+        <!-- Thymeleaf dynamic link: Creates a URL to the home page -->
+        <!--<a th:href="@{'/'}">Back to home</a>-->
+        <br>
+        <br>
+        <br>
+         <br>
+         <br>
+         <br>
+         <br>
+ </div>
+
+        <div class="post">
+            <!-- Thymeleaf text display: Dynamically sets the title of the post -->
+            <h2 class="posttitle" th:text="${post.title}">Title</h2>
+
+            <!-- Thymeleaf text display: Concatenates and displays the author's first name -->
+            <h5 class="writtenby" th:text="'Written by ' + ${post.account.firstName}">Account First Name</h5>
+
+            <!-- Thymeleaf text display: Dynamically displays the post's creation date -->
+            <h5 class="publishedon" th:text="'Published on ' + ${post.createdAt}">Created At</h5>
+
+            <!-- Thymeleaf text display: Dynamically displays the post's last update date -->
+            <h5 class="lastupdated" th:text="'Last Updated on ' + ${post.updatedAt}">Updated At</h5>
+
+            <!-- Thymeleaf text display: Dynamically displays the post body -->
+            <p class="postbody" th:utext="${post.body}">Body text</p>
+        </div>
+
+        <!-- Thymeleaf with Spring Security: Displays the list only if the user is authenticated -->
+        <ul sec:authorize="isAuthenticated()">
+            <!-- Thymeleaf dynamic link: Constructs a URL for editing the post -->
+            <li><a th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit</a></li>
+
+            <!-- Thymeleaf dynamic link: Constructs a URL for deleting the post -->
+            <li><a th:href="@{'/posts/' + ${post.id} + '/delete'}">Delete</a></li>
+        </ul>
+    </div>
+<div th:replace="footer :: footerFragment"></div>
+
+
+<!--leave the script at bottom beside body here-->
+<script th:src="@{/assets/js/practice.js}"></script>
+    </body>
+     
+</html>
